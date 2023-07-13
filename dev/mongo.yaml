@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-app-deployment
+  labels:
+    app: mongo-app-label-name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb-pod-label-name
+  template:
+    metadata:
+      labels:
+        app: mongodb-pod-label-name
+    spec:
+      containers:
+      - name: mongodb-container-name
+        image: mongo:5.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 27017
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: my-mongo-secret-name
+              key: mongo-user
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: my-mongo-secret-name
+              key: mongo-password
+
+--- 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-mongo-service-name
+spec:
+  selector:
+    app: mongodb-pod-label-name
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
