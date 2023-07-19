@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: hbc08/bch:e3d2fb76932e91b4dcadd24278ace56e7a08eb44
+        image: hbc08/bch:73c5a95662df2d47b57b69426b4dad374ee9cdf6
         ports:
         - containerPort: 8881
         env:
