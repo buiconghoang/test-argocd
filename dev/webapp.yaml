@@ -36,7 +36,7 @@ spec:
         #       name: mongo-config-name
         #       key: mongo-url
           - name: MONGODB_URL
-            value: mongodb://mongouser:mongopassword-failedzzzz@my-mongo-service-name:27017
+            value: mongodb://mongouser:mongopassword@my-mongo-service-name:27017
 ---
 apiVersion: v1
 kind: Service
