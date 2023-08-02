@@ -43,11 +43,11 @@ kind: Service
 metadata:
   name: my-webapp-service
 spec:
-  type: NodePort
+  # type: NodePort
   selector:
     app: webapp
   ports:
     - protocol: TCP
       port: 8881
       targetPort: 8881
-      nodePort: 30201
+      # nodePort: 30201
